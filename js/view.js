@@ -2,16 +2,17 @@
 
 const root = document.querySelector("#root");
 const data = JSON.parse(sessionStorage.getItem("post"));
+const home = () => (location.href = "index.html");
 
 const display = (post) => {
   return `
     <div class="container mb-3">
-          <div class="card">
-            <p id="post_id text-center">${post.id}</p>
-            <h3 class="card-title">${post.title}</h3> 
-            <div class="card-body">${post.body}</div>
-            <div class="container d-felx flex-wrap justify-content-around">
-                <button class="rounded text-danger"onclick="home(})">Refresh</button>
+          <div class=" bg-success card py-2">
+            <p class="text-danger text-center" id="post_id">${post.id}</p>
+            <h3 class="ms-2 card-title text-light">${post.title}</h3> 
+            <div class="fw-bold card-body text-primary">${post.body}</div>
+            <div class="container d-flex justify-content-end">
+                <button class=" me-5 rounded text-danger" onclick="home()">Refresh</button>
             </div>
           </div>
         </div>
