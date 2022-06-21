@@ -174,9 +174,9 @@ const display = (post) => {
           <h3 class="card-title ms-2 text-primary">${post.title}</h3> 
           <div class="card-body text-light">${post.body}</div>
           <div class="container d-flex flex-wrap justify-content-center">
-              <button class="me-2 fw-bold rounded text-primary" style="cursor:pointer;" id="view" onclick="viewPost(${post.id})">View</button>
-              <button class="rounded fw-bold text-info" id="update" style="cursor:pointer;" onclick="updatePost(${post.id})">Update</button>
-              <button class="ms-2 fw-bold rounded text-danger" style="cursor:pointer;" id="delete" onclick="deletePost(${post.id})">Delete</button>
+              <button class="btn bg-white p-1 me-2 fw-bold rounded text-primary" id="view" onclick="viewPost(${post.id})">View</button>
+              <button class="rounded btn bg-white fw-bold text-info" id="update" onclick="updatePost(${post.id})">Update</button>
+              <button class="ms-2 btn bg-white fw-bold rounded text-danger" id="delete" onclick="deletePost(${post.id})">Delete</button>
           </div>
       </div>
   </div>
