@@ -169,17 +169,17 @@ const renderLoop = (postArr) => {
 const display = (post) => {
   return `
   <div class="container mt-0 mb-3">
-        <div class="card bg-success pt-1 pb-2">
+      <div class="card bg-success pt-1 pb-2">
           <p class="text-danger ms-2" id="post_id">${post.id}</p>
           <h3 class="card-title ms-2 text-primary">${post.title}</h3> 
           <div class="card-body text-light">${post.body}</div>
           <div class="container d-flex flex-wrap justify-content-center">
-              <button class="me-2 fw-bold rounded text-primary" onclick="viewPost(${post.id})">View</button>
-              <button class="rounded fw-bold text-info" onclick="updatePost(${post.id})">Update</button>
-              <button class="ms-2 fw-bold rounded text-danger"onclick="deletePost(${post.id})">Delete</button>
+              <button class="me-2 fw-bold rounded text-primary" style="cursor:pointer;" id="view" onclick="viewPost(${post.id})">View</button>
+              <button class="rounded fw-bold text-info" id="update" style="cursor:pointer;" onclick="updatePost(${post.id})">Update</button>
+              <button class="ms-2 fw-bold rounded text-danger" style="cursor:pointer;" id="delete" onclick="deletePost(${post.id})">Delete</button>
           </div>
-        </div>
       </div>
+  </div>
   `;
 };
 
