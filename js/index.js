@@ -46,12 +46,12 @@ const viewPost = async (id) => {
         posts.filter((post) => post.id == id)
       );
       sessionStorage.setItem("post", `${JSON.stringify(post)}`);
-      window.open("post.html");
+      // window.open("post.html");
     } else {
       const [post] = currentPost.filter((post) => post.id == id);
       console.log(post);
       sessionStorage.setItem("post", `${JSON.stringify(post)}`);
-      window.open("post.html");
+      // window.open("post.html");
     }
   } catch (err) {
     console.log(err.message);
@@ -143,7 +143,6 @@ const deletePost = async (id) => {
         (posts) => (posts = posts.filter((post) => post.id != id))
       );
       currentPost = [...newPosts];
-      console.log(currentPost);
       renderLoop(currentPost);
     } else {
       currentPost = currentPost.filter((post) => post.id != id);
@@ -174,7 +173,7 @@ const display = (post) => {
           <h3 class="card-title ms-2 text-primary">${post.title}</h3> 
           <div class="card-body text-light">${post.body}</div>
           <div class="container d-flex flex-wrap justify-content-center">
-              <button class="btn bg-white p-1 me-2 fw-bold rounded text-primary" id="view" ontouchstart="viewPost(${post.id})" onclick="viewPost(${post.id})">View</button>
+              <a href="post.html" class="btn bg-white p-1 me-2 fw-bold rounded text-primary" id="view" ontouchstart="viewPost(${post.id})" onclick="viewPost(${post.id})">View</a href"">
               <button class="rounded btn bg-white fw-bold text-info" id="update" onclick="updatePost(${post.id})">Update</button>
               <button class="ms-2 btn bg-white fw-bold rounded text-danger" id="delete" onclick="deletePost(${post.id})">Delete</button>
           </div>
