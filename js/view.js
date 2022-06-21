@@ -1,8 +1,8 @@
 "use strict";
 
 const root = document.querySelector("#root");
-const data = JSON.parse(sessionStorage.getItem("post"));
 const home = () => (location.href = "index.html");
+const data = JSON.parse(sessionStorage.getItem("post"));
 
 const display = (post) => {
   return `

@@ -22,7 +22,6 @@ const url = "https://jsonplaceholder.typicode.com/posts";
 const getPosts = async () => {
   try {
     const posts = await (await fetch(url)).json();
-    console.log(posts);
 
     //loop to display all the posts
     renderLoop(posts);
@@ -46,7 +45,8 @@ const viewPost = async (id) => {
         posts.filter((post) => post.id == id)
       );
       sessionStorage.setItem("post", `${JSON.stringify(post)}`);
-      // window.open("post.html");
+      console.log(post);
+      window.open("post.html");
     } else {
       const [post] = currentPost.filter((post) => post.id == id);
       console.log(post);
@@ -173,8 +173,8 @@ const display = (post) => {
           <h3 class="card-title ms-2 text-primary">${post.title}</h3> 
           <div class="card-body text-light">${post.body}</div>
           <div class="container d-flex flex-wrap justify-content-center">
-              <a <button href="post.html" 
-                 class="btn bg-white p-1 me-2 fw-bold rounded text-primary" id="view" ontouchstart="viewPost(${post.id})" onclick="viewPost(${post.id})">View
+              <a <button 
+                 class="btn bg-white p-1 me-2 fw-bold rounded text-primary" id="view" onclick="viewPost(${post.id})">View
               </button></a>
               <button class="rounded btn bg-white fw-bold text-info" id="update" onclick="updatePost(${post.id})">Update</button>
               <button class="ms-2 btn bg-white fw-bold rounded text-danger" id="delete" onclick="deletePost(${post.id})">Delete</button>
