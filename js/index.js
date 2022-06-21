@@ -26,6 +26,10 @@ const getPosts = async () => {
 
     //loop to display all the posts
     renderLoop(posts);
+    const view = document.querySelectorAll("#view");
+    view.forEach((ele) =>
+      ele ? ele.addEventListener("click", viewPost) : null
+    );
     return posts;
   } catch (er) {
     console.log(er.message);
