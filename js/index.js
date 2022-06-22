@@ -40,18 +40,21 @@ let currentPost = [];
 //viewPost function called whe the 'create Post' button is clicked
 const viewPost = async (id) => {
   try {
+    localStorage.clear();
     if (!currentPost.length) {
+      let ref = window.open();
       const [post] = await await getPosts().then((posts) =>
         posts.filter((post) => post.id == id)
       );
-      sessionStorage.setItem("post", `${JSON.stringify(post)}`);
       console.log(post);
-      window.open("post.html");
+      localStorage.setItem("post", `${JSON.stringify(post)}`);
+      console.log(post);
+      ref.location = "post.html";
     } else {
       const [post] = currentPost.filter((post) => post.id == id);
       console.log(post);
-      sessionStorage.setItem("post", `${JSON.stringify(post)}`);
-      // window.open("post.html");
+      localStorage.setItem("post", `${JSON.stringify(post)}`);
+      window.open("post.html");
     }
   } catch (err) {
     console.log(err.message);
@@ -173,15 +176,22 @@ const display = (post) => {
           <h3 class="card-title ms-2 text-primary">${post.title}</h3> 
           <div class="card-body text-light">${post.body}</div>
           <div class="container d-flex flex-wrap justify-content-center">
-              <a
+              <button
                  class="btn bg-white p-1 me-2 fw-bold rounded text-primary" id="view" onclick="viewPost(${post.id})">View
-              </a>
+              </button>
               <button class="rounded btn bg-white fw-bold text-info" id="update" onclick="updatePost(${post.id})">Update</button>
               <button class="ms-2 btn bg-white fw-bold rounded text-danger" id="delete" onclick="deletePost(${post.id})">Delete</button>
           </div>
       </div>
   </div>
   `;
+};
+
+const buttonEvents = () => {
+  const view = document.querySelector("#view");
+  view.forEach((ele) => ele.addEventListener("click", () => viewPost));
+  const update = document.querySelectorAll("#update");
+  const del = document.querySelectorAll("#delete");
 };
 
 // export default display;
